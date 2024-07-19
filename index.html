@@ -3,31 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Xan App</title>
   </head>
   <body>
-    <header>
-      <form>
-        <input type="search" placeholder="Enter a city..." required />
-        <input type="submit" value="Search" />
-      </form>
-    </header>
-    <main>
-      <div>
-        <h1>Paris</h1>
-        <p>
-          Friday 2:10, clear sky <br />
-          Humidity: 67%, Wind: 2.06km/h
-        </p>
-      </div>
-      <div>
-        <p>🌥️21°C</p>
-      </div>
-    </main>
-    <footer>
-      This project was coded by <a href="https://github.com/alexmwondoka">Alexandra Mwondoka</a> is
-      <a href="https://github.com/alexmwondoka/shecodes-project">open-sourced on GitHub</a> and
-      <a href="https://alex-shecodes-project.netlify.app/">hosted on Netlify</a>
-    </footer>
+    <div class="weather-app-container">
+      <header>
+        <form id="weather-form">
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            required
+            class="weather-form-input"
+          />
+          <input type="submit" value="Search" class="weather-form-button" />
+        </form>
+      </header>
+      <main>
+        <div class="weather-app-content">
+          <div>
+            <h1 class="city">Paris</h1>
+            <p class="weather-app-details">
+              Friday 2:10, clear sky <br />
+              Humidity: <strong>67%</strong>, Wind: <strong>2.06km/h</strong>
+            </p>
+          </div>
+          <div class="current-weather">
+            <div class="current-weather-icon">🌥️</div>
+            <div class="current-weather-temperature">21</div>
+            <div class="current-weather-unit">°C</div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        This project was coded by
+        <a href="https://github.com/alexmwondoka">Alexandra Mwondoka</a> is
+        <a href="https://github.com/alexmwondoka/shecodes-project"
+          >open-sourced on GitHub</a
+        >
+        and
+        <a href="https://alex-shecodes-project.netlify.app/"
+          >hosted on Netlify</a
+        >
+      </footer>
+    </div>
   </body>
 </html>
