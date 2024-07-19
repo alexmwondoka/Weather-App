@@ -8,3 +8,4 @@ function handleSearch(event) {
 
 let searchElement = document.querySelector("#weather-form");
 searchElement.addEventListener("submit", handleSearch);
+
