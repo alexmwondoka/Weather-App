@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./src/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,6 +20,7 @@
             type="search"
             placeholder="Enter a city..."
             required
+            id="search-input"
             class="weather-form-input"
           />
           <input type="submit" value="Search" class="weather-form-button" />
@@ -28,7 +29,7 @@
       <main>
         <div class="weather-app-content">
           <div>
-            <h1 class="city">Paris</h1>
+            <h1 class="city" id="city-name">Paris</h1>
             <p class="weather-app-details">
               Friday 2:10, clear sky <br />
               Humidity: <strong>67%</strong>, Wind: <strong>2.06km/h</strong>
@@ -59,6 +60,6 @@
       </footer>
     </div>
 
-    <script src="index.js"></script>
+    <script src="./src/index.js"></script>
   </body>
 </html>
