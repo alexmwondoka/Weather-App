@@ -1,5 +1,6 @@
 body {
   background-color: #f9f7fe;
+  font-family: "Roboto", sans-serif;
 }
 
 a {
@@ -54,6 +55,7 @@ header {
   color: #A9A6B3;
   font-size: 16px;
   font-weight: 500;
+  line-height: 24px;
 }
 
 .weather-app-details strong {
@@ -71,12 +73,13 @@ header {
 
 .current-weather-temperature {
   font-size: 86px;
-  font-weight: 600;
+  line-height: 88px;
+  font-weight: bold;
 }
 
 .current-weather-unit {
   font-size: 25px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 footer {
