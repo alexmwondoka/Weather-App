@@ -28,6 +28,7 @@ header {
   padding: 15px 20px;
   width: 80%;
   font-size: 16px;
+  font-family: "Roboto", sans-serif;
 }
 
 .weather-form-button {
