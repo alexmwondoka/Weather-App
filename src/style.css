@@ -53,14 +53,14 @@ header {
 }
 
 .weather-app-details {
-  color: #A9A6B3;
+  color: #a9a6b3;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
 }
 
 .weather-app-details strong {
-  color: #F65282;
+  color: #f65282;
 }
 
 .current-weather {
@@ -68,8 +68,8 @@ header {
 }
 
 .current-weather-icon {
-  font-size: 40px;
-  margin: 15px 4px 0 0;
+  width: 88px;
+  height: 88px;
 }
 
 .current-weather-temperature {
