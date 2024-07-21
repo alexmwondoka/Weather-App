@@ -6,9 +6,10 @@ function updateWeather(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
   let timeElement = document.querySelector("#time");
-  let date = new Date(response.data.time * 1000);
+  let date = new Date(
+    response.data.time * 1000
+  ); /* Date parsed from API timestamp */
   let iconElement = document.querySelector("#icon");
-  
 
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
   city.innerHTML = response.data.city;
@@ -57,7 +58,35 @@ function handleSearch(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHTML = "";
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="weather-forecast-day">
+    <div class="weather-forecast-date">Tue</div>
+    <div class="weather-forecast-icon">🌥️</div>
+    <div class="weather-forecast-temperatures">
+      <div class="weather-forecast-temperature">
+        <strong>15°</strong>
+      </div>
+      <div class="weather-forecast-temperature">19°</div>
+    </div>
+  </div>          
+`;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let searchElement = document.querySelector("#weather-form");
 searchElement.addEventListener("submit", handleSearch);
 
 searchCity("Paris");
+displayForecast();
