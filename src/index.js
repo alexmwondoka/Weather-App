@@ -18,8 +18,11 @@ function updateWeather(response) {
   windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = Math.round(temperature);
   timeElement.innerHTML = formatDate(date);
+
+  getForecast(response.data.city);
 }
 
+//
 function formatDate(date) {
   let hours = date.getHours();
   let minutes = date.getMinutes();
@@ -44,6 +47,7 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+// Gets current weather data for city from the api
 function searchCity(city) {
   let apiKey = "a25a30d9ff54c846ecdc270dcb8coa0t";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
@@ -51,6 +55,7 @@ function searchCity(city) {
   axios.get(apiUrl).then(updateWeather);
 }
 
+// Gets the city input and transfers it to searchCity
 function handleSearch(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
@@ -58,27 +63,48 @@ function handleSearch(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
-  let forecast = document.querySelector("#forecast");
+// Takes timestamp, parses it, gets day and maps to name of day
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
+// Gets forecast data from the api for the next 7 days
+function getForecast(city) {
+  let apiKey = "a25a30d9ff54c846ecdc270dcb8coa0t";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+// Injects the forecast section html and the api data
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastHTML = "";
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
   <div class="weather-forecast-day">
-    <div class="weather-forecast-date">Tue</div>
-    <div class="weather-forecast-icon">🌥️</div>
+    <div class="weather-forecast-date">${formatDay(day.time)}</div>
+    <div class="weather-forecast-icon">
+    <img src="${day.condition.icon_url}">
+    </div>
     <div class="weather-forecast-temperatures">
       <div class="weather-forecast-temperature">
-        <strong>15°</strong>
+        <strong>${Math.round(day.temperature.maximum)}°</strong>
       </div>
-      <div class="weather-forecast-temperature">19°</div>
+      <div class="weather-forecast-temperature">${Math.round(
+        day.temperature.minimum
+      )}°</div>
     </div>
   </div>          
 `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
@@ -89,4 +115,3 @@ let searchElement = document.querySelector("#weather-form");
 searchElement.addEventListener("submit", handleSearch);
 
 searchCity("Paris");
-displayForecast();
